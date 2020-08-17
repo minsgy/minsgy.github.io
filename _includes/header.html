@@ -5,13 +5,15 @@
     <button id="search-toggle" type="button">
         <span class="sr-only">Toggle Search Form</span>
     </button>
-    <a id="logo" href="/">
-        <span class="sr-only">Minseok Blog</span>
-    </a>
     <div id="search">
         <input id="search-input" type="search" placeholder="Search..." value="" />
     </div>
     <ul class="search__results" id="results-container"></ul>
+    <ul id="menu" class="nav">
+        <li class="{% if page.url != '/about/' and page.url != '/tags/' %} active {% endif %}"><a href="{{ base_path }}/">blog</a></li>
+        <li class="{% if page.url == '/tags/' %} active {% endif %}"><a href="{{ base_path }}/tags/">tags</a></li>
+        <li class="{% if page.url == '/about/' %} active {% endif %}"><a href="{{ base_path }}/about/">about</a></li>
+    </ul>
 </div>
 <!-- Script pointing to jekyll-search.js -->
 <script src="{{site.baseurl}}/dest/jekyll-search.js" type="text/javascript"></script>
