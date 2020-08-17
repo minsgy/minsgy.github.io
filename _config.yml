@@ -2,7 +2,6 @@ title: minsgy tech blog
 email: alstjrchl97@likelion.org
 description: |
   🦁Likelion 8th Organizer 최민석 tech blog 입니다.  
-  
 baseurl: ''
 url: 'http://minsgy.github.io'
 timezone: Asia/Seoul 
@@ -53,16 +52,7 @@ github: [metadata]
 author: alstjrhcl97@likelion.org
 image: '/assets/images/default_blog_cover.jpg'
 asset_url: /assets
-#asset_url: //meta-kage.kakaocdn.net/dn/osa/blog/assets
-#asset_url: //t1.daumcdn.net/osa/blog/assets
 google_analytics:
   ua: 'UA-72007721-1'
-# facebook:
-#   app_id: '1204347326263800'
-#   username: nkakao
-# twitter:
-#   username: kakaodev
-# google_plus:
-#   username: kakaodev
 github_url:
   username: minsgy
