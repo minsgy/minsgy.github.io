@@ -3,7 +3,7 @@ layout: post
 title:  "Django 주요 과정"
 author: minsgy.choi
 date:   2020-07-29 00:00
-tags: [Django]
+categories: [Django]
 ---
 {%raw%}
 

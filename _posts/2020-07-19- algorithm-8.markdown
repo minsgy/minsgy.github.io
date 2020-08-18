@@ -3,7 +3,7 @@ layout: post
 title:  "Likelion 8th - [최대/최소값 출력]"
 author: minsgy.choi
 date:   2020-07-19 00:00
-tags: [python,Algorithm]
+categories: [python,Algorithm]
 ---
 
 Likelion 8th  

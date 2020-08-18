@@ -3,7 +3,7 @@ layout: post
 title:  "Programmers - Algorithm [SkillTree]"
 author: minsgy.choi
 date:   2020-07-18 00:00
-tags: [python,Algorithm,Stack]
+categories: [python,Algorithm,Stack]
 ---
 Programers Algorithm  
 SkillTree - 선행스킬  

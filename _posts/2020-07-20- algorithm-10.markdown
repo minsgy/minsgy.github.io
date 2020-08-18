@@ -3,7 +3,7 @@ layout: post
 title:  "BOJ Algorithm - [괄호규칙]"
 author: minsgy.choi
 date:   2020-07-20 00:00
-tags: [python,Algorithm,Stack] 
+categories: [python,Algorithm,Stack] 
 ---
 
 BOJ Algorithm  

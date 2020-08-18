@@ -3,7 +3,7 @@ layout: post
 title:  "Django로 나를 소개해볼게 #1"
 author: minsgy.choi
 date:   2020-08-01 00:00
-tags: [Django,Dreamary]
+categories: [Django,Dreamary]
 ---  
 
 {% raw %}

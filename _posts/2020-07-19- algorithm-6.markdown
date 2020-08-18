@@ -3,7 +3,7 @@ layout: post
 title:  "LikeLion 8th - [완주하지 못한 사람]"
 author: minsgy.choi
 date:   2020-07-19 00:00
-tags: [python,Algorithm]
+categories: [python,Algorithm]
 ---
 LikeLion 8th  
 완주하지 못한 사람

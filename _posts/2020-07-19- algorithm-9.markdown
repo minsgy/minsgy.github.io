@@ -3,7 +3,7 @@ layout: post
 title:  "Likelion 8th - [구구단 계단]"
 author: minsgy.choi
 date:   2020-07-19 00:00
-tags: [python,Algorithm,Math]
+categories: [python,Algorithm,Math]
 ---
 
 Likelion 8th  
