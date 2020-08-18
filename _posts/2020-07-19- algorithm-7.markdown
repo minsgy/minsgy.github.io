@@ -3,7 +3,7 @@ layout: post
 title:  "BOJ - Algorithm [옥상정원 꾸미기]"
 author: minsgy.choi
 date:   2020-07-19 00:00
-categories: [python,Algorithm,Stack]
+tags: [python,Algorithm,Stack]
 ---
 BOJ Algorithm  
 옥상정원 꾸미기  
