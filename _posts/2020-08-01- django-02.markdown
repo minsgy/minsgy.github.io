@@ -1,0 +1,134 @@
+---
+layout: post
+title:  "Django로 나를 소개해볼께 #2"
+author: minsgy.choi
+date:   2020-08-02 00:00
+categories: [Django Dreamary]
+---  
+{%raw%}
+
+## QuerySet이란?  
++ DB에서 전달 받은 객체들의 모음, 실제 DB에서는 Row에 해당된다.
++ Python으로 작성한 코드가 SQL Mapping되어, QuerySet이라는 자료 형태로 넘어옴.
+![queryset](https://user-images.githubusercontent.com/60251579/89090212-680a6900-d3dc-11ea-8743-000ab1cf921c.PNG)
+
+
+
+## QuerySet의 객체 별 접근방식  
++ DB에서는 column과 row에 데이터가 저장되게 됩니다.  
++ Column - 각 Class 안의 지정 된 속성, Row - 각 속성에 부여되어 있는 적용 값.  
++ 즉, Dictionary 형태로 저장되어있다. `Dictionary = {'key' : 'value'}`  
+
+```python
+<Classname>.Objects.values():
+```
+
+
++ `.values()`로 dictionary의 `key`와 `value`에 접근이 가능합니다.  
++ `Queryset()`은 List이며, 객체는 Dictionary이다. 즉, `<변수 이름>[인덱스]['key]` 형태로 value 접근가능.  
+
+```python
+<Classname>.Objects.get(id=1):
+```  
+
++ `get()`은 Dictionary의 요소 **하나**를 반환합니다.
++ 해당 조건의 요소가 존재하지 않을 때는 `DoesNotExist` 에러가 발생합니다.  
++ 여러개 존재 할 때는 `MultiObjectsReturned` 에러가 발생합니다.  
+
+
+```python
+# ex
+>>> c = Account.objects.get(id=1)
+>>> c.name
+'Kim'
+```
+
+
+```python
+<Classname>.objects.filter() # filter() 주어진 parameter에 따라 query 결과를 필터. List 형태로 return
+<Classname>.objects.all() # QuerySet 안의 모든 객체를 index 값들로 저장된 것을 return
+```
++ filter() 주어진 parameter에 따라 query 결과를 필터. List 형태로 return  
++ QuerySet 안의 모든 객체를 List 형태로 return  
+  
+
+
+```python
+a = Post.objects.get(id=1)
+post.delete()
+```
++ 객체를 삭제할 때는 먼저 해당 포스트를 `Get()`Method를 불러온 후, `delete()` 메소드로 삭제할 수 있다.  
+
+
+## Dreamary를 통해 QuerySet 접근 Method 확인해보기
++ views.py
+```python
+def home(request):
+    designers = Designer.objects.all() # Model의 Designer에 대한 모든 객체를 가져와 designers 변수에 저장
+    return render(request, 'home.html', {'designer' : designers}) # home.html 경로에 desigers 변수 값 전달
+```
+home.html
+```html
+<!-- views.py에서 가져온 designer 객체의 image의 url을 나타냅니다. -->
+<img src="{{ designer.image.url }}" class="card-img-top" alt="Designer_Image">    
+```
+
+
+## PK란?
++ Primary key(PK)라 하며, 각 객체가 생성 될 때 생기는 고유한 식별 값  
++ 이를 통하여 각 객체를 비교할 수 있음.  
++ 우리가 사용 할 방법으로는 각 사용자의 세부 사항을 알기 위해, `pk`를 이용해 객체를 구별한다.  
++ 밑 예시와 같이 id라는 `pk`가 각 객체마다 있다.
+![DBPK](https://user-images.githubusercontent.com/60251579/89093720-c2fd8980-d3f7-11ea-8f3c-bf793c7739b5.PNG)  
+
+
+## PK를 이용한 동적 페이지 생성
++ 동적페이지 할당이란? 말 그대로 매번 나오는 Post에 대해 **뷰와 템플릿**을 만들지 않고, 자동으로 할당되는 방식  
++ **Path Convertor**를 이용  
+
+
+## Path Convertor  
++ 여러 객체의 URL을 **"계층적으로"** 다룰 수 있도록 도와주는 도구입니다.  
+![URL](https://user-images.githubusercontent.com/60251579/89093973-107af600-d3fa-11ea-818b-c38e4f1ec122.PNG)  
+
++ urls.py
++ `<int:designer_id>` 에서 Designer_id(PK이름), Views.py 에서의 PK인자 이름은 무조건 같아야합니다.  
+```python
+# url을 profile/1, profile/2 ... 이런 방식으로 /profile/객체번호(pk) 가 되도록만듭니다.
+path('profile/<int:designer_id>/', views.detail, name="detail")
+```  
++ Templates, 여기나오는 detail이 **함수** 임을 무조건 기억!!
+```html
+<!-- 객체의 pk(객체.id)값에 맞는 detail "함수"를 불러온다. -->
+{% url 'detail' designer.id %}
+```  
+
+
+## get_Object_or_404 Error  
++ Object, 즉 객체를 가져오려고 했는데 없을 경우 발생하는 Error  
++ 보통 없는 글을 불러오려고 할 때, 발생하는 오류입니다.  
+![CS](https://user-images.githubusercontent.com/60251579/89096553-6bb8e280-d412-11ea-9bdf-5256c3ae4203.PNG)  
+
++ views.py  
+```python
+def detail(request, designer_id): #views.pk 변수명과 urls.pk 변수명이 같아야함.
+    designer = get_object_or_404(Designer, pk = designer_id) # urls에서 명시한 designer를 가져옴
+    return render(request, 'detail.html',{'designer':designer})
+```  
+
++urls.py  
+```python
+# designer_id 에 PK값을 받는다고 생각하면됨.
+path('profile/<int:designer_id>', views.detail, name="detail")
+```
+
+
+다음 강의는 CRUD 입니다.
+
+{%endraw%}
+---
+
+[minsgy_github] 저장되어 있습니다. 감사합니다.
+
+[minsgy_github]:https://github.com/minsgy/BJ-Programmers
+

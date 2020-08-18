@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "Programmers - Algorithm [K번째수 구하기]"
+author: minsgy.choi
+date:   2020-07-18 00:00
+categories: [python,Algorithm,Sort]
+---
+Programers Algorithm  
+K번째수 구하기  
+  
+배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하려 합니다.  
+array가 [1, 5, 2, 6, 3, 7, 4], i = 2, j = 5, k = 3이라면,  
+array의 2번째부터 5번째까지 자르면 [5, 2, 6, 3]입니다.  
+  
+1에서 나온 배열을 정렬하면 [2, 3, 5, 6]입니다.  
+2에서 나온 배열의 3번째 숫자는 5입니다.  
+  
+배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때,  
+commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를  
+배열에 담아 return 하도록 solution 함수를 작성해주세요.  
+  
+  
+```python
+def solution(array, command):
+    answer = []
+    for i in range(len(command)):
+        array_copy = array[:]
+        array_copy = array[command[i][0]-1:(command[i][1])]
+        array_copy.sort()
+        answer.append(array_copy[command[i][2]-1])
+    return answer
+
+#main
+arrays = [1,5,2,6,3,7,4]
+commands = [[2,5,3],
+           [4,4,1], 
+           [1,7,3]]
+print(solution(arrays, commands))
+```
+
+느낀점
+--
+이 문제는 정렬에 대한 문제입니다. 그렇지만 python 함수인 sort() 함수를 이용해 간단히 정렬했습니다.  
+유심히 봐야할 점은 python에서 list를 call by value로 복사하기 위해서는, [:]를 이용합니다.  
+그렇지 않고 list1 = list2 이런식으로 하게 되면, list1이 변경할 시 동시에 list2도 변경됩니다.  
+  
+이를 유의하고 문제를 풀었습니다. slicing 기능을 사용하여 주어진 조건값을 만족하며 풀었습니다.  
+
+---
+
+코드는 [minsgy_github] 저장되어 있습니다. 감사합니다.
+
+[minsgy_github]:   https://github.com/minsgy/BJ-Programmers
+

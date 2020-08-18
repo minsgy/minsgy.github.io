@@ -1,0 +1,85 @@
+---
+layout: post
+title:  "Django로 나를 소개해볼게 #1"
+author: minsgy.choi
+date:   2020-08-01 00:00
+categories: [Django,Dreamary]
+---  
+
+{% raw %}
+
+## Model의 이해  
++ 데이터에 접속하고 관리하도록 도와주는 객체
++ Django와 DB의 관계 사이   
+![1](https://user-images.githubusercontent.com/60251579/89054708-3a99cd00-d394-11ea-80d7-3e86e34b353b.PNG)  
+
+
+## Model의 형식  
++ 밑 그림과 같이 하나의 Table에 이름/지역/소개 하나의 '형식'을 만들어둠.  
++ 즉, 공통 된 부분들을 모아둔 데이터를 Model 이라고 합니다.  
+![캡처](https://user-images.githubusercontent.com/60251579/89054890-80ef2c00-d394-11ea-87aa-7134e8f1a202.PNG)  
+
+## Model의 생성과 적용  
+
++ models.py  
++ 이미지, 이름, 주소, 설명 으로 구성 된 모델 형식을 만듭니다.  
+
+
+```python
+# 모델명의 첫 글자는 무조건 대문자!
+class Designer(models.Model): # models.Model 인자는 고정.
+    # 이미지를 지정 - ImageField()
+    image = models.ImageField(upload_to = 'images/')
+    # 이름을 지정 - CharField() : 문자열 필드 생성 길이 최대 50 
+    name = models.CharField(max_length=50)
+    # 주소를 지정 - CharField() : 문자열 필드 생성 길이 최대 255
+    address = models.CharField(max_length=255)
+    # 설명 - TextField() : 문자를 받을 수 있는 필드 생성
+    description = models.TextField()
+
+    def __str__(self): 
+    # Model Class의 객체의 문자열 표현을 리턴합니다.
+    # 위 예제를 admin 페이지에서 확인하면
+    # name 이 객체의 이름으로 나오게 된다. 
+        return self.name
+```  
+## Admin 관리 예시  
+![이름](https://user-images.githubusercontent.com/60251579/89056065-63bb5d00-d396-11ea-8f85-1c7af332c19b.PNG)  
+**Python에서 ImageField() 사용하기 위해서는 pip 패키지인, pilow 가 필수입니다.**  
+```bash
+pip install pilow
+```
+
+## Makemigrations, migrate  
++ 위와 같이 Model을 정의를 해주었으면, 해당 형식을 DB에 등록해야 한다.
++ DB가 알아 듣도록 번역하기 **makemigrations**,  
++ 만든 번역을 DB에 전달 하는 것이 **migrate** 이다.  
+```bash 
+python manage.py makemigrations <app 이름>
+python manage.py migrate <app 이름>
+```
+## admin.py 의 Model Class 등록하기
+
+```python
+# Model 에 있는 Designer를 알 수 있도록 참조
+from .models import Designer
+    # Register your models here.
+    admin.site.register(Designer) 
+    #Admin 사이트 접속 시 Designer 모델 형식 인식완료
+```  
+    
+## admin 계정 생성
+
+```bash
+python manage.py createsuperuser
+```
+
+**#2**편은 이어집니다.  
+
+{% endraw %}
+---
+
+[minsgy_github] 저장되어 있습니다. 감사합니다.
+
+[minsgy_github]:   https://github.com/minsgy/BJ-Programmers
+

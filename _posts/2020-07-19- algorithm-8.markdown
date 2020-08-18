@@ -1,0 +1,49 @@
+---
+layout: post
+title:  "Likelion 8th - [최대/최소값 출력]"
+author: minsgy.choi
+date:   2020-07-19 00:00
+categories: [python,Algorithm]
+---
+
+Likelion 8th  
+최대/최소값 출력하기  
+
+
+
+![최대최소](https://user-images.githubusercontent.com/60251579/87841383-cc5b0200-c8df-11ea-86a8-01b898a6e2dd.png)
+
+```python
+#숫자 값을 입력 받은 후, 숫자를 출력 하고
+#받아온 숫자들 중 최대값, 최소값들을 밑에 출력하시오.
+a = list(map(int, input('숫자를 입력하세요 >> ').split()))
+[print(a[i], "\t", end = '') for i in range(len(a))] #lamda
+#b = []
+#[b.append(a[i]) for i in range(len(a))]
+print()
+MAX = max(a)
+MIN = min(a)
+for i in a:
+    if (i==MAX):
+        print("최댓값 ", end = ' ')
+    elif (i==MIN):
+        print("최솟값 ", end = ' ')
+    else:
+        print("       ", end = ' ')
+
+```
+
+느낀점
+--
+
+해당 문제는 Likelion 8th 과정 중, list와 for in, if, 함수 사용에 대하여  
+이를 응용하여 해결하는 문제입니다. 원래 문제는 파일로 부터 받아와, 숫자 count를  
+10번씩 끊어서, 홀수 줄은 숫자, 짝수 줄은 최대/최소 여부를 출력하는 문제입니다.  
+
+
+---
+
+코드는 [minsgy_github] 저장되어 있습니다. 감사합니다.
+
+[minsgy_github]:   https://github.com/minsgy/BJ-Programmers
+
