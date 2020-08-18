@@ -3,7 +3,7 @@ layout: post
 title:  "Programmers Algorithm - [전화번호 목록]"
 author: minsgy.choi
 date:   2020-07-30 00:00
-categories: [python,Algorithm,Hash]
+tags: [python,Algorithm,Hash]
 ---
 
 Programmers Algorithm  

@@ -3,7 +3,7 @@ layout: post
 title:  "BOJ - Algorithm [일곱난쟁이]"
 author: minsgy.choi
 date:   2020-07-17 00:00
-categories: [python,Algorithm,Implement]
+tags: [python,Algorithm,Implement]
 ---
 BOJ Algorithm  
 일곱난쟁이  
